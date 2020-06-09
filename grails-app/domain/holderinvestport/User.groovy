@@ -19,6 +19,8 @@ class User implements Serializable {
     boolean accountLocked
     boolean passwordExpired
 
+    static hasMany = [portifolios:Portifolio]
+
     Set<Role> getAuthorities() {
         (UserRole.findAllByUser(this) as List<UserRole>)*.role as Set<Role>
     }
@@ -27,9 +29,11 @@ class User implements Serializable {
         username nullable: false, blank: false, unique: true, email: true
         fullname nullable: false, blank: false
         password nullable: false, blank: false, password: true
+        portifolios nullable: true
     }
 
     static mapping = {
 	    password column: '`password`'
+        version false
     }
 }

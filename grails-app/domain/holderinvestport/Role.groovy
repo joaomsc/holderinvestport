@@ -19,6 +19,7 @@ class Role implements Serializable {
 
 	static mapping = {
 		cache true
+		version false
 	}
 
 	String toString() {

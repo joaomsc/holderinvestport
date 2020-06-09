@@ -24,13 +24,21 @@ class RegisterController {
                 if(user && role) {
                     UserRole.create user, role
 
+                    def portf = new Portifolio(owner: user.getId()).save()
+
                     UserRole.withSession {
                         it.flush()
                         it.clear()
                     }
 
-                    flash.sucmessage = "Parabéns, conta criada com sucesso. Agora, faça o login."
-                    redirect controller: "login", action: "auth"
+                    if(portf){
+                        flash.sucmessage = "Parabéns, conta criada com sucesso. Agora, faça o login."
+                        redirect controller: "login", action: "auth"
+                    } else {
+                        flash.message = "Problema ao criar sua conta"
+                        render view: "index"
+                        return
+                    }
                 } else {
                     flash.message = "Problema ao criar sua conta"
                     render view: "index"

@@ -3,11 +3,14 @@ package holderinvestport
 class UrlMappings {
 
     static mappings = {
-        "/$controller/$action?/$id?(.$format)?"{
+        "/$controller/$id?/$action?(.$format)?"{
             constraints {
                 // apply constraints here
             }
         }
+
+        "/portifolio/$id?/add/$companyId?"(controller: "portifolio", action: "addCompany")
+        "/portifolio/$id?/remove/$companyId?"(controller: "portifolio", action: "removeCompany")
 
         "/"(controller:'login', action:'auth')
         "500"(view:'/error')
