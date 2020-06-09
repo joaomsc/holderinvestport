@@ -16,7 +16,7 @@
                 <g:if test='${flash.sucmessage}'>
                     <div class="alert alert-success" role="alert">${flash.message}</div>
                 </g:if>
-                <form class="form-signin" action="register" method="POST" id="loginForm" autocomplete="off">
+                <form class="form-signin" action="register" method="POST" id="registerForm" autocomplete="off">
 
                     <div class="form-group">
                         <label for="fullname">Nome completo</label>

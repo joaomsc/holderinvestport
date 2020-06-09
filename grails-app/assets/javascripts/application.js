@@ -11,8 +11,8 @@
 //= require_self
 
 document.addEventListener("DOMContentLoaded", function(event) {
-    document.forms['loginForm'].elements['email'].focus();
     document.forms['loginForm'].elements['username'].focus();
+    document.forms['registerForm'].elements['fullname'].focus();
 });
 
 function passwordDisplayToggle() {

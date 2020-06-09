@@ -13,3 +13,11 @@
 *= require mobile
 *= require_self
 */
+
+.nav-bar-bnh {
+    background-color: #007bff;
+}
+
+img.bnh-logo {
+    border-radius: 10%;
+}
