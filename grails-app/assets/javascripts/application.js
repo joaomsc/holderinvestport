@@ -9,3 +9,18 @@
 //= require bootstrap
 //= require popper.min
 //= require_self
+
+document.addEventListener("DOMContentLoaded", function(event) {
+    document.forms['loginForm'].elements['email'].focus();
+    document.forms['loginForm'].elements['username'].focus();
+});
+
+function passwordDisplayToggle() {
+    var toggleCheckB = document.getElementById("passwordToggler");
+    var passElem = document.getElementById("password");
+    if (toggleCheckB.checked && passElem.type === "password") {
+        passElem.type = "text";
+    } else if(!toggleCheckB.checked && passElem.type === "text"){
+        passElem.type = "password";
+    }
+}

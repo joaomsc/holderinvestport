@@ -22,14 +22,13 @@
                     <div class="form-group">
                         <label for="password">Password</label>
                         <input type="password" class="form-control" name="${passwordParameter ?: 'password'}" id="password"/>
-                        <i id="passwordToggler" title="toggle password display" onclick="passwordDisplayToggle()">&#128065;</i>
+                        <div class="form-group form-check">
+                            <label class="form-check-label">
+                                <input type="checkbox" class="form-check-input" onclick="passwordDisplayToggle()" id="passwordToggler"/> Mostrar Senha
+                            </label>
+                        </div>
                     </div>
 
-                    <div class="form-group form-check">
-                        <label class="form-check-label">
-                            <input type="checkbox" class="form-check-input" name="${rememberMeParameter ?: 'remember-me'}" id="remember_me" <g:if test='${hasCookie}'>checked="checked"</g:if>/> Salvar senha
-                        </label>
-                    </div>
                     <button id="submit" class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Entrar</button>
                     <hr class="my-4">
                     <p>Ainda não tem uma conta? <g:link controller="register">Faça sua conta</g:link></p>
@@ -38,23 +37,5 @@
         </div>
     </div>
 </div>
-<script type="text/javascript">
-    document.addEventListener("DOMContentLoaded", function(event) {
-        document.forms['loginForm'].elements['username'].focus();
-    });
-    function passwordDisplayToggle() {
-        var toggleEl = document.getElementById("passwordToggler");
-        var eyeIcon = '\u{1F441}';
-        var xIcon = '\u{2715}';
-        var passEl = document.getElementById("password");
-        if (passEl.type === "password") {
-            toggleEl.innerHTML = xIcon;
-            passEl.type = "text";
-        } else {
-            toggleEl.innerHTML = eyeIcon;
-            passEl.type = "password";
-        }
-    }
-</script>
 </body>
 </html>

@@ -46,10 +46,5 @@
         </div>
     </div>
 </div>
-<script type="text/javascript">
-    document.addEventListener("DOMContentLoaded", function(event) {
-        document.forms['loginForm'].elements['email'].focus();
-    });
-</script>
 </body>
 </html>
