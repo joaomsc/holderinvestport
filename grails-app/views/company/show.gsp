@@ -1,32 +1,28 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta name="layout" content="main" />
-        <g:set var="entityName" value="${message(code: 'company.label', default: 'Company')}" />
-        <title><g:message code="default.show.label" args="[entityName]" /></title>
-    </head>
-    <body>
-        <a href="#show-company" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-        <div class="nav" role="navigation">
-            <ul>
-                <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-                <li><a class="list" href="${createLink(uri: '/user')}">Usuários</a></li>
-                <li><a class="list" href="${createLink(uri: '/company')}">Empresas</a></li>
-                <li><g:link class="create" action="create"><g:message code="Criar Empresa" args="[entityName]" /></g:link></li>
-            </ul>
+<head>
+    <meta name="layout" content="main"/>
+    <title>Detalhes da Empresa</title>
+</head>
+
+<body>
+<div id="show-company" class="content scaffold-show" role="main">
+    <div class="card">
+        <div class="card-header">
+            Detalhes da Empresa
         </div>
-        <div id="show-company" class="content scaffold-show" role="main">
-            <h1><g:message code="default.show.label" args="[entityName]" /></h1>
-            <g:if test="${flash.message}">
-            <div class="message" role="status">${flash.message}</div>
-            </g:if>
-            <f:display bean="company" />
+
+        <div class="card-body">
+            <h5 class="card-title">${this.company.name}</h5>
+
+            <p class="card-text">${this.company.description}</p>
             <g:form resource="${this.company}" method="DELETE">
-                <fieldset class="buttons">
-                    <g:link class="edit" action="edit" resource="${this.company}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
-                    <input class="delete" type="submit" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
-                </fieldset>
+                    <a class="btn btn-primary" href="/company/${this.company.id}/edit">Editar</a>
+                    <input class="btn btn-danger" type="submit" value="Deletar"
+                           onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Você tem certeza?')}');"/>
             </g:form>
         </div>
-    </body>
+    </div>
+</div>
+</body>
 </html>

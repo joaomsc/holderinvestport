@@ -21,3 +21,32 @@
 img.bnh-logo {
     border-radius: 10%;
 }
+
+#navbardrop {
+    color: ghostwhite;
+}
+
+.nav-item {
+    background-color: #007bff;
+}
+
+.nav-item a:hover{
+    background-color: #007bff;
+}
+
+#nav-main-links{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.card-text{
+    padding-bottom: 20px;
+}
+
+a.btn{
+    text-decoration: none;
+}
+
+a.btn:hover{
+    text-decoration: none;
+}

@@ -1,40 +1,52 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta name="layout" content="main" />
-        <g:set var="entityName" value="${message(code: 'company.label', default: 'Company')}" />
-        <title><g:message code="default.edit.label" args="[entityName]" /></title>
-    </head>
-    <body>
-        <a href="#edit-company" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-        <div class="nav" role="navigation">
-            <ul>
-                <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-                <li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-                <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-            </ul>
+<head>
+    <meta name="layout" content="main"/>
+    <title>Editar Empresa</title>
+</head>
+
+<body>
+<div id="edit-company" class="content" role="main">
+    <g:if test="${flash.message}">
+        <div class="message" role="status">${flash.message}</div>
+    </g:if>
+    <g:hasErrors bean="${this.company}">
+        <ul class="errors" role="alert">
+            <g:eachError bean="${this.company}" var="error">
+                <li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message
+                        error="${error}"/></li>
+            </g:eachError>
+        </ul>
+    </g:hasErrors>
+    <div class="card">
+        <div class="card-header">
+            Editar Empresa
         </div>
-        <div id="edit-company" class="content scaffold-edit" role="main">
-            <h1><g:message code="default.edit.label" args="[entityName]" /></h1>
-            <g:if test="${flash.message}">
-            <div class="message" role="status">${flash.message}</div>
-            </g:if>
-            <g:hasErrors bean="${this.company}">
-            <ul class="errors" role="alert">
-                <g:eachError bean="${this.company}" var="error">
-                <li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>
-                </g:eachError>
-            </ul>
-            </g:hasErrors>
+
+        <div class="card-body">
             <g:form resource="${this.company}" method="PUT">
-                <g:hiddenField name="version" value="${this.company?.version}" />
-                <fieldset class="form">
-                    <f:all bean="company"/>
-                </fieldset>
-                <fieldset class="buttons">
-                    <input class="save" type="submit" value="${message(code: 'default.button.update.label', default: 'Update')}" />
-                </fieldset>
+                <div class="form-group">
+                    <label for="name">Razão Social</label>
+                    <input type="text" value="${this.company.name}" placeholder="Razão Social" class="form-control"
+                           id="name" autocapitalize="none"/>
+                </div>
+
+                <div class="form-group">
+                    <label for="tradingName">Nome</label>
+                    <input type="text" value="${this.company.tradingName}" placeholder="Nome da Empresa"
+                           class="form-control" name="tradingName" id="tradingName" autocapitalize="none"/>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Descriçao</label>
+                    <textarea type="text" rows="3" placeholder="Descreva a Empresa"
+                           class="form-control" name="description" id="description">${this.company.description}</textarea>
+                </div>
+
+                <input class="save btn btn-lg btn-primary btn-block text-uppercase" type="submit" value="Salvar"/>
             </g:form>
         </div>
-    </body>
+    </div>
+</div>
+</body>
 </html>

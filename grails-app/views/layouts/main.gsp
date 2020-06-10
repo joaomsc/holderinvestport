@@ -17,7 +17,8 @@
 
 <nav class="navbar nav-bar-bnh navbar-expand-sm navbar-static-top" role="navigation">
     <a class="navbar-brand" href="/#"><asset:image src="bnhlogo.png" class="bnh-logo" alt="Buy n Hold logo"/></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent"
+            aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 
@@ -29,9 +30,11 @@
                     <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
                         <sec:loggedInUserInfo field='fullname'/>
                     </a>
+
                     <div class="dropdown-menu navbar-light">
                         <g:form controller="logout">
-                            <g:submitButton class="dropdown-item navbar-light color-light" name="Submit" value="Logout" style="color:gray" />
+                            <g:submitButton class="dropdown-item navbar-light color-light" name="Submit" value="Logout"
+                                            style="color:gray"/>
                         </g:form>
                     </div>
                 </li>
@@ -42,6 +45,21 @@
 </nav>
 
 <div class="container">
+    <div class="container">
+        <g:if test="${flash.message}">
+            <div class="message alert alert-secondary" role="status">${flash.message}</div>
+        </g:if>
+    </div>
+    <sec:ifLoggedIn>
+        <div id="nav-main-links" class="nav" role="navigation">
+            <ul>
+                <li><a class="list" href="${createLink(uri: '/user')}">Usuários</a></li>
+                <li><a class="list" href="${createLink(uri: '/company')}">Empresas</a></li>
+                <li><a class="list" href="${createLink(uri: '/company/create')}">Criar Empresa</a></li>
+                <li><a class="list" href="${createLink(uri: '/portifolio/show')}">Minha Carteira</a></li>
+            </ul>
+        </div>
+    </sec:ifLoggedIn>
     <g:layoutBody/>
 </div>
 

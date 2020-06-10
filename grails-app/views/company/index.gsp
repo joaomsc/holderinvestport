@@ -1,30 +1,49 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta name="layout" content="main" />
-        <g:set var="entityName" value="${message(code: 'company.label', default: 'Company')}" />
-        <title><g:message code="default.list.label" args="[entityName]" /></title>
-    </head>
-    <body>
-        <a href="#list-company" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-        <div class="nav" role="navigation">
-            <ul>
-                <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-                <li><a class="list" href="${createLink(uri: '/user')}">Usuários</a></li>
-                <li><a class="list" href="${createLink(uri: '/company')}">Empresas</a></li>
-                <li><g:link class="create" action="create"><g:message code="Criar Empresa" args="[entityName]" /></g:link></li>
-            </ul>
-        </div>
-        <div id="list-company" class="content scaffold-list" role="main">
-            <h1><g:message code="default.list.label" args="[entityName]" /></h1>
-            <g:if test="${flash.message}">
-                <div class="message" role="status">${flash.message}</div>
-            </g:if>
-            <f:table collection="${companyList}" />
+<head>
+    <meta name="layout" content="main"/>
+    <title>Lista de Empresas</title>
+</head>
 
-            <div class="pagination">
-                <g:paginate total="${companyCount ?: 0}" />
-            </div>
+<body>
+<div class="card">
+    <div class="card-header">
+        Lista de Empresas
+    </div>
+
+    <div id="list-user" class="card-body" role="main">
+
+        <div id="list-company-wrapper" class="dataTables_wrapper dt-bootstrap4">
+            <table id="company-list-table" data-search="true" class="table table-striped table-bordered list-table">
+                <thead>
+                <tr>
+                    <th>Nome Fantasia</th>
+                    <th>Razão Social</th>
+                    <th>Sobre</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <g:each in="${companyList}" var="company">
+                    <tr>
+                        <td class="col-sm-2"><a href="/company/${company.id}/show">${company.tradingName}</a></td>
+                        <td class="col-sm-2">${company.name}</td>
+                        <td class="col-sm-6">${company.description}</td>
+                        <td class="col-sm-2">
+                            <div class="float-right">
+                                <g:form resource="${company}" method="DELETE">
+                                    <a class="btn btn-primary" href="/company/${company.id}/edit">Editar</a>
+                                    <input class="btn btn-danger" type="submit" value="Deletar"
+                                           onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Você tem certeza?')}');"/>
+                                </g:form>
+                            </div>
+                        </td>
+                    </tr>
+                </g:each>
+                </tbody>
+            </table>
         </div>
-    </body>
+    </div>
+</div>
+</body>
 </html>

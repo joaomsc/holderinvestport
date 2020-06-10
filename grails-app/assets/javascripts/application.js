@@ -8,11 +8,27 @@
 //= require jquery-3.3.1.min
 //= require bootstrap
 //= require popper.min
+//= require jquery-3.3.1.min
+//= require dataTables.bootstrap4.min
+//= require jquery.dataTables.min
 //= require_self
 
-document.addEventListener("DOMContentLoaded", function(event) {
-    document.forms['loginForm'].elements['username'].focus();
-    document.forms['registerForm'].elements['fullname'].focus();
+$(document).ready(function () {
+
+    $('#loginForm #username').focus();
+    $('#registerForm #fullname').focus();
+
+    $('.list-table').DataTable({
+        searching: true,
+        paging: false,
+        lengthChange: false,
+        info: false,
+        language: {
+            search: "",
+            searchPlaceholder: "Buscar..."
+        }
+
+    });
 });
 
 function passwordDisplayToggle() {
@@ -20,7 +36,7 @@ function passwordDisplayToggle() {
     var passElem = document.getElementById("password");
     if (toggleCheckB.checked && passElem.type === "password") {
         passElem.type = "text";
-    } else if(!toggleCheckB.checked && passElem.type === "text"){
+    } else if (!toggleCheckB.checked && passElem.type === "text") {
         passElem.type = "password";
     }
 }

@@ -1,29 +1,48 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta name="layout" content="main" />
-        <g:set var="entityName" value="${message(code: 'user.label', default: 'User')}" />
-        <title><g:message code="default.list.label" args="[entityName]" /></title>
-    </head>
-    <body>
-        <a href="#list-user" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-    <div class="nav" role="navigation">
-        <ul>
-            <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-            <li><a class="list" href="${createLink(uri: '/user')}">Usuários</a></li>
-            <li><a class="list" href="${createLink(uri: '/company')}">Empresas</a></li>
-        </ul>
-    </div>
-        <div id="list-user" class="content scaffold-list" role="main">
-            <h1><g:message code="default.list.label" args="[entityName]" /></h1>
-            <g:if test="${flash.message}">
-                <div class="message" role="status">${flash.message}</div>
-            </g:if>
-            <f:table collection="${userList}" />
+<head>
+    <meta name="layout" content="main"/>
+    <title>Lista de Usuários</title>
+</head>
 
-            <div class="pagination">
-                <g:paginate total="${userCount ?: 0}" />
-            </div>
+<body>
+<div class="card">
+    <div class="card-header">
+        Lista de Usuários
+    </div>
+
+    <div id="list-user" class="card-body" role="main">
+
+        <div id="list-user-wrapper" class="dataTables_wrapper dt-bootstrap4">
+            <table id="user-list-table" data-search="true" class="table table-striped table-bordered list-table">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nome</th>
+                    <th>E-mail</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <g:each in="${userList}" var="user">
+                    <tr>
+                        <td class="col-sm-1">${user.id}</td>
+                        <td class="col-sm-4"><a href="/user/${user.id}/show">${user.fullname}</a></td>
+                        <td class="col-sm-4">${user.username}</td>
+                        <td class="col-sm-2">
+                            <div class="float-right">
+                                <g:form resource="${user}" method="DELETE">
+                                    <input class="btn btn-danger" type="submit" value="Deletar"
+                                           onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Você tem certeza?')}');"/>
+                                </g:form>
+                            </div>
+                        </td>
+                    </tr>
+                </g:each>
+                </tbody>
+            </table>
         </div>
-    </body>
+    </div>
+</div>
+</body>
 </html>
