@@ -16,11 +16,13 @@
             <h5 class="card-title">${this.company.name}</h5>
 
             <p class="card-text">${this.company.description}</p>
-            <g:form resource="${this.company}" method="DELETE">
+            <sec:ifAllGranted roles="ROLE_ADMIN">
+                <g:form resource="${this.company}" method="DELETE">
                     <a class="btn btn-primary" href="/company/${this.company.id}/edit">Editar</a>
                     <input class="btn btn-danger" type="submit" value="Deletar"
                            onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Você tem certeza?')}');"/>
-            </g:form>
+                </g:form>
+            </sec:ifAllGranted>
         </div>
     </div>
 </div>

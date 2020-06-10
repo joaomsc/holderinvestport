@@ -3,8 +3,11 @@ package holderinvestport
 import grails.plugin.springsecurity.annotation.Secured
 import grails.validation.ValidationException
 
+import javax.transaction.Transactional
+
 import static org.springframework.http.HttpStatus.*
 
+@Transactional
 class CompanyController {
 
     CompanyService companyService
@@ -36,6 +39,11 @@ class CompanyController {
 
         try {
             companyService.save(company)
+
+            Company.withTransaction {
+                sess ->
+                    sess.flush()
+            }
         } catch (ValidationException e) {
             respond company.errors, view:'create'
             return

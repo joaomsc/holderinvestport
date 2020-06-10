@@ -18,11 +18,19 @@ class PortifolioController {
 
     @Secured(['ROLE_USER'])
     def show(Long id) {
-        def portf = portifolioService.get(id)
 
-        if(portf.getOwnerId() != springSecurityService.principal.id) {
-            notAllowed()
-            return
+        def portf = null;
+
+        if(id == null){
+            def currentUser = User.get(springSecurityService.principal.id)
+            portf = currentUser.getPortifolios().first();
+        } else {
+            portf = portifolioService.get(id)
+
+            if(portf.getOwnerId() != springSecurityService.principal.id) {
+                notAllowed()
+                return
+            }
         }
 
         respond portf

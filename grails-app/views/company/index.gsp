@@ -31,11 +31,13 @@
                         <td class="col-sm-6">${company.description}</td>
                         <td class="col-sm-2">
                             <div class="float-right">
-                                <g:form resource="${company}" method="DELETE">
-                                    <a class="btn btn-primary" href="/company/${company.id}/edit">Editar</a>
-                                    <input class="btn btn-danger" type="submit" value="Deletar"
-                                           onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Você tem certeza?')}');"/>
-                                </g:form>
+                                <sec:ifAllGranted roles="ROLE_ADMIN">
+                                    <g:form resource="${company}" method="DELETE">
+                                        <a class="btn btn-primary" href="/company/${company.id}/edit">Editar</a>
+                                        <input class="btn btn-danger" type="submit" value="Deletar"
+                                               onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Você tem certeza?')}');"/>
+                                    </g:form>
+                                </sec:ifAllGranted>
                             </div>
                         </td>
                     </tr>
