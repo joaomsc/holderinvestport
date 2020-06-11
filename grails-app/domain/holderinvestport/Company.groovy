@@ -14,13 +14,27 @@ class Company {
         description nullable: true, blank: true
     }
 
-    static hasMany = [portifolios:Portifolio]
-    static belongsTo = [portifolios:Portifolio]
+    static hasMany = [portifolios: Portifolio]
+    static belongsTo = [portifolios: Portifolio]
 
     static mapping = {
         autoTimestamp true
         version false
         portifolios joinTable: [name: 'portifolio_company', coloumn: 'portifolio_id']
+    }
+
+    boolean isInPortifolio(Long userId) {
+
+        def currentUser = User.get(userId)
+        def companiesInPortifolio = currentUser.getPortifolios().first().getCompanies()
+        def companyId = this.getId()
+
+        if (companiesInPortifolio.asBoolean()) {
+            return companiesInPortifolio.asList().any { it -> it.getId() == companyId }
+        }
+
+        return false
+
     }
 
     String toString() {

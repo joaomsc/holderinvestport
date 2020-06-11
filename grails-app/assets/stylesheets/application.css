@@ -15,7 +15,7 @@
 */
 
 .nav-bar-bnh {
-    background-color: #007bff;
+    background-color: #28292d;
 }
 
 img.bnh-logo {
@@ -27,11 +27,11 @@ img.bnh-logo {
 }
 
 .nav-item {
-    background-color: #007bff;
+    background-color: #28292d;
 }
 
 .nav-item a:hover{
-    background-color: #007bff;
+    background-color: #28292d;
 }
 
 #nav-main-links{
@@ -49,4 +49,54 @@ a.btn{
 
 a.btn:hover{
     text-decoration: none;
+}
+
+.btn-danger:focus,
+.btn-danger.active {
+    color: #fff;
+    background-color: #dc3545;
+    border-color: #dc3545;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid transparent;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.btn-success:focus,
+.btn-success.active {
+    color: #fff;
+    background-color: #28a745;
+    border-color: #28a745;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid transparent;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }

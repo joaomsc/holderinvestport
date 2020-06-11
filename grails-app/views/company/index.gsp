@@ -38,6 +38,19 @@
                                                onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Você tem certeza?')}');"/>
                                     </g:form>
                                 </sec:ifAllGranted>
+                                <sec:ifNotGranted roles="ROLE_ADMIN">
+                                    <g:companyNotInPortifolio company="${company}">
+                                        <form action="/portifolio/add/${company.id}" method="put" class="portf-company-action">
+                                            <input type="submit" class="btn btn-success" value="Adicionar na Carteira" />
+                                        </form>
+                                    </g:companyNotInPortifolio>
+
+                                    <g:companyInPortifolio company="${company}">
+                                        <form action="/portifolio/remove/${company.id}" method="put" class="portf-company-action">
+                                            <input type="submit" class="btn btn-danger" value="Remover da Carteira" />
+                                        </form>
+                                    </g:companyInPortifolio>
+                                </sec:ifNotGranted>
                             </div>
                         </td>
                     </tr>

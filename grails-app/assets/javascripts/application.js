@@ -29,6 +29,41 @@ $(document).ready(function () {
         }
 
     });
+
+    $('.portf-company-action').submit(function (event) {
+        event.preventDefault();
+
+        var submitBtn = $("input[type=submit]",this);
+        console.log(submitBtn);
+
+        $form = $(this);
+
+        var submittedAction = $form.attr('action');
+
+        var isRemoveAction = submittedAction.split("/")[2] === "remove";
+
+        $.ajax({
+            url: $form.attr('action'),
+            type: $form.attr('method'),
+            async: true,
+            success: function (response) {
+                if(response.id) {
+                    if(isRemoveAction){
+                        submitBtn.val("Adicionar na carteira");
+                        $(submitBtn).removeClass("btn-danger");
+                        $(submitBtn).addClass("btn-success");
+                        $form.attr("action", submittedAction.replace("remove", "add"));
+                    } else {
+                        submitBtn.val("Remover da carteira");
+                        $(submitBtn).removeClass("btn-success");
+                        $(submitBtn).addClass("btn-danger");
+                        $form.attr("action", submittedAction.replace("add", "remove"));
+                    }
+                }
+            }
+        });
+    });
+
 });
 
 function passwordDisplayToggle() {

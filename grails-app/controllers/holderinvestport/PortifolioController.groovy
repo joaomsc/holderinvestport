@@ -37,13 +37,10 @@ class PortifolioController {
     }
 
     @Secured(['ROLE_USER'])
-    def addCompany(Long id, Long companyId) {
-        def portf = portifolioService.get(id)
+    def addCompany(Long companyId) {
 
-        if(portf.getOwnerId() != springSecurityService.principal.id) {
-            notAllowed()
-            return
-        }
+        def currentUser = User.get(springSecurityService.principal.id)
+        def portf = currentUser.getPortifolios().first();
 
         def company = Company.get(companyId)
 
@@ -64,13 +61,10 @@ class PortifolioController {
     }
 
     @Secured(['ROLE_USER'])
-    def removeCompany(Long id, Long companyId) {
-        def portf = portifolioService.get(id)
+    def removeCompany(Long companyId) {
 
-        if(portf.getOwnerId() != springSecurityService.principal.id) {
-            notAllowed()
-            return
-        }
+        def currentUser = User.get(springSecurityService.principal.id)
+        def portf = currentUser.getPortifolios().first();
 
         def company = Company.get(companyId)
 
