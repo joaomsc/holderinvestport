@@ -25,6 +25,11 @@
 
         <div class="card-body">
             <g:form resource="${this.company}" method="POST">
+                <!--div class="form-group">
+                    <label for="name">Imagem</label>
+                    <input type="file" name="image" id="company-image" />
+                </div-->
+
                 <div class="form-group">
                     <label for="name">Razão Social</label>
                     <input type="text" placeholder="Razão Social" class="form-control" id="name" autocapitalize="none"/>

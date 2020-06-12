@@ -100,3 +100,18 @@ a.btn:hover{
     border-radius: 0.25rem;
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
+
+.side-img{
+    float: left;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.side-image-float-left{
+    padding-top: 10px;
+}
+
+.above-image-float{
+    clear: left;
+    padding-top: 30px;
+}

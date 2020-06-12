@@ -13,10 +13,14 @@
         </div>
 
         <div class="card-body">
-            <h5 class="card-title">${this.user.fullname}</h5>
+            <g:img class="side-img" dir="images" file="user-default.png" width="110" height="110"/>
+            <div class="side-image-float-left">
+                <h5 class="card-title">${this.user.fullname}</h5>
 
-            <p class="card-text"><label class="label"><b>E-mail: </b></label>${this.user.username}</p>
+                <p class="card-text"><label class="label"><b>E-mail:</b></label>${this.user.username}</p>
+            </div>
 
+            <div class="above-image-float">
                 <g:form resource="${this.user}" method="DELETE">
                     <input class="btn btn-danger" type="submit" value="Deletar"
                            onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Você tem certeza?')}');"/>
@@ -24,6 +28,7 @@
             </div>
         </div>
     </div>
+</div>
 </div>
 </body>
 </html>
