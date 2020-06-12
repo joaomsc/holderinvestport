@@ -53,16 +53,16 @@
     <sec:ifLoggedIn>
         <div id="nav-main-links" class="nav" role="navigation">
             <ul>
+                <sec:ifNotGranted roles="ROLE_ADMIN">
+                    <li><a class="dashboard" href="${createLink(uri: '/portifolio/show')}">Minha Carteira</a></li>
+                </sec:ifNotGranted>
                 <sec:ifAllGranted roles="ROLE_ADMIN">
                     <li><a class="list" href="${createLink(uri: '/user')}">Usuários</a></li>
                 </sec:ifAllGranted>
                 <li><a class="list" href="${createLink(uri: '/company')}">Empresas</a></li>
                 <sec:ifAllGranted roles="ROLE_ADMIN">
-                    <li><a class="list" href="${createLink(uri: '/company/create')}">Criar Empresa</a></li>
+                    <li><a class="save" href="${createLink(uri: '/company/create')}">Criar Empresa</a></li>
                 </sec:ifAllGranted>
-                <sec:ifNotGranted roles="ROLE_ADMIN">
-                    <li><a class="list" href="${createLink(uri: '/portifolio/show')}">Minha Carteira</a></li>
-                </sec:ifNotGranted>
             </ul>
         </div>
     </sec:ifLoggedIn>

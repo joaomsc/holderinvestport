@@ -186,7 +186,7 @@ img {
 }
 
 .nav a.list {
-    background-image: url(../images/skin/database_table.png);
+    background-image: url(../images/skin/list.svg);
 }
 
 .nav a.create {
@@ -489,7 +489,7 @@ input:invalid:focus, select:invalid:focus, textarea:invalid:focus {
 }
 
 .buttons .save {
-    background-image: url(../images/skin/database_save.png);
+    background-image: url(../images/skin/create.svg);
 }
 
 a.skip {

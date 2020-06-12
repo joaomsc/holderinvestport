@@ -119,3 +119,10 @@ a.btn:hover{
     clear: left;
     padding-top: 30px;
 }
+
+.dashboard {
+    background-position: 0.7em center;
+    background-repeat: no-repeat;
+    text-indent: 25px;
+    background-image: url(../images/skin/dashboard.svg);
+}
