@@ -53,6 +53,8 @@ a.btn:hover{
 
 .btn-danger:focus,
 .btn-danger.active {
+    box-shadow: none;
+    outline: none;
     color: #fff;
     background-color: #dc3545;
     border-color: #dc3545;
@@ -78,6 +80,8 @@ a.btn:hover{
 
 .btn-success:focus,
 .btn-success.active {
+    box-shadow: none;
+    outline: none;
     color: #fff;
     background-color: #28a745;
     border-color: #28a745;

@@ -1,31 +1,37 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta name="layout" content="main" />
-        <g:set var="entityName" value="${message(code: 'portifolio.label', default: 'Portifolio')}" />
-        <title><g:message code="default.show.label" args="[entityName]" /></title>
-    </head>
-    <body>
-        <a href="#show-portifolio" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-        <div class="nav" role="navigation">
-            <ul>
-                <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-                <li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-                <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-            </ul>
+<head>
+    <meta name="layout" content="main"/>
+    <title>Minha Carteira</title>
+</head>
+
+<body>
+<div class="card">
+    <div class="card-header">
+        Minha Carteira
+    </div>
+
+    <div id="list-portifolio-company" class="card-body" role="main">
+        <div id="list-portifolio-company-wrapper" class="card-columns">
+            <g:each in="${this.portifolio.companies}" var="company">
+                    <div class="card" style="width: 18rem;">
+                        <g:img alt="Card image cap" class="card-img-top" dir="images" file="company-default.jpeg"/>
+                        <div class="card-body">
+                            <h5 class="card-title"><a href="/company/${company.id}/show">${company.tradingName}</a>
+                            </h5>
+                            <h6 class="card-subtitle mb-2 text-muted">${company.name}</h6>
+
+                            <p class="card-text">${company.description}</p>
+
+                            <form action="/portifolio/remove/${company.id}" method="put"
+                                  class="portf-company-action">
+                                <input type="submit" class="btn btn-danger" value="Remover da Carteira"/>
+                            </form>
+                        </div>
+                    </div>
+            </g:each>
         </div>
-        <div id="show-portifolio" class="content scaffold-show" role="main">
-            <h1><g:message code="default.show.label" args="[entityName]" /></h1>
-            <g:if test="${flash.message}">
-            <div class="message" role="status">${flash.message}</div>
-            </g:if>
-            <f:display bean="portifolio" />
-            <g:form resource="${this.portifolio}" method="DELETE">
-                <fieldset class="buttons">
-                    <g:link class="edit" action="edit" resource="${this.portifolio}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
-                    <input class="delete" type="submit" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
-                </fieldset>
-            </g:form>
-        </div>
-    </body>
+    </div>
+</div>
+</body>
 </html>

@@ -11,12 +11,13 @@
         Lista de Empresas
     </div>
 
-    <div id="list-user" class="card-body" role="main">
+    <div id="list-company" class="card-body" role="main">
 
         <div id="list-company-wrapper" class="dataTables_wrapper dt-bootstrap4">
             <table id="company-list-table" data-search="true" class="table table-striped table-bordered list-table">
                 <thead>
                 <tr>
+                    <th></th>
                     <th>Nome Fantasia</th>
                     <th>Razão Social</th>
                     <th>Sobre</th>
@@ -26,6 +27,7 @@
                 <tbody>
                 <g:each in="${companyList}" var="company">
                     <tr>
+                        <td><g:img class="list-img" dir="images" file="company-default.jpeg" width="30" height="30"/></td>
                         <td class="col-sm-2"><a href="/company/${company.id}/show">${company.tradingName}</a></td>
                         <td class="col-sm-2">${company.name}</td>
                         <td class="col-sm-6">${company.description}</td>
