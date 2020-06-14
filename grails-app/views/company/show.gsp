@@ -13,7 +13,13 @@
         </div>
 
         <div class="card-body">
-            <g:img class="side-img" dir="images" file="company-default.jpeg" width="110" height="110"/>
+            <g:if test="${company.image}">
+                <td><g:img class="side-img" dir="images" file="${company.image.split("/").last()}" width="110" height="110"/></td>
+            </g:if>
+            <g:else>
+                <td><g:img class="side-img" dir="images" file="company-default.jpeg" width="110" height="110"/></td>
+            </g:else>
+
             <div class="side-image-float-left">
                 <h5 class="card-title">${this.company.name}</h5>
 

@@ -2,6 +2,7 @@ package holderinvestport
 
 import grails.plugin.springsecurity.annotation.Secured
 import grails.validation.ValidationException
+import org.springframework.web.multipart.MultipartFile
 
 import javax.transaction.Transactional
 
@@ -38,6 +39,15 @@ class CompanyController {
         }
 
         try {
+
+            companyService.save(company)
+
+            def imageFile = params.imageFile
+            if(imageFile){
+                MultipartFile multipartFilefile = (MultipartFile) imageFile;
+                company.setImage(FileUtil.uploadCompanyImage(company.getId(), multipartFilefile))
+            }
+
             companyService.save(company)
 
             Company.withTransaction {
@@ -71,6 +81,17 @@ class CompanyController {
         }
 
         try {
+
+            def imageFile = params.imageFile
+            if(imageFile){
+                def oldImage = company.getImage()
+                MultipartFile multipartFilefile = (MultipartFile) imageFile;
+                company.setImage(FileUtil.uploadCompanyImage(company.getId(), multipartFilefile))
+                if(oldImage){
+                    FileUtil.deleteCompanyImage(oldImage)
+                }
+            }
+
             companyService.save(company)
         } catch (ValidationException e) {
             respond company.errors, view:'edit'
@@ -92,7 +113,8 @@ class CompanyController {
             notFound()
             return
         }
-
+        def company = companyService.get(id)
+        FileUtil.deleteCompanyImage(company.getImage())
         companyService.delete(id)
 
         request.withFormat {

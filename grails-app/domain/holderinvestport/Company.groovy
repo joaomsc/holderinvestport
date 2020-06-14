@@ -5,6 +5,7 @@ class Company {
     String tradingName
     String name
     String description
+    String image
     Date dateCreated
     Date lastUpdated
 
@@ -12,6 +13,7 @@ class Company {
         tradingName nullable: false, blank: false
         name nullable: false, blank: false
         description nullable: true, blank: true
+        image nullable: true
     }
 
     static hasMany = [portifolios: Portifolio]

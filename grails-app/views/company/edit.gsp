@@ -24,10 +24,20 @@
         </div>
 
         <div class="card-body">
-            <g:form resource="${this.company}" method="PUT">
+            <g:uploadForm resource="${this.company}" method="PUT">
                 <div class="form-group">
+                    <g:if test="${company.image}">
+                        <td><g:img class="side-img" dir="images" file="${company.image.split("/").last()}" width="110" height="110"/></td></td>
+                    </g:if>
+                    <g:else>
+                        <td><g:img class="side-img" dir="images" file="company-default.jpeg" width="110" height="110"/></td>
+                    </g:else>
+                    <input type="file" name="imageFile" id="imageFile" class="side-image-float-left"/>
+                </div>
+
+                <div class="form-group above-image-float">
                     <label for="name">Razão Social</label>
-                    <input type="text" value="${this.company.name}" placeholder="Razão Social" class="form-control"
+                    <input type="text" value="${this.company.name}" placeholder="Razão Social" class="form-control" name="name"
                            id="name" autocapitalize="none"/>
                 </div>
 
@@ -44,7 +54,7 @@
                 </div>
 
                 <input class="save btn btn-lg btn-primary btn-block text-uppercase" type="submit" value="Salvar"/>
-            </g:form>
+            </g:uploadForm>
         </div>
     </div>
 </div>

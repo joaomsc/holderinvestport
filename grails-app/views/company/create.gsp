@@ -24,15 +24,15 @@
         </div>
 
         <div class="card-body">
-            <g:form resource="${this.company}" method="POST">
-                <!--div class="form-group">
-                    <label for="name">Imagem</label>
-                    <input type="file" name="image" id="company-image" />
-                </div-->
-
+            <g:uploadForm resource="${this.company}" method="POST">
                 <div class="form-group">
+                    <td><g:img class="side-img" dir="images" file="company-default.jpeg" width="110" height="110"/></td>
+                    <input type="file" name="imageFile" id="imageFile" class="side-image-float-left"/>
+                </div>
+
+                <div class="form-group above-image-float">
                     <label for="name">Razão Social</label>
-                    <input type="text" placeholder="Razão Social" class="form-control" id="name" autocapitalize="none"/>
+                    <input type="text" placeholder="Razão Social" class="form-control" name="name" id="name" autocapitalize="none"/>
                 </div>
 
                 <div class="form-group">
@@ -49,7 +49,7 @@
 
                 <g:submitButton id="submit" name="create" class="btn btn-lg btn-primary btn-block text-uppercase"
                                 value="Criar"/>
-            </g:form>
+            </g:uploadForm>
         </div>
     </div>
 </div>

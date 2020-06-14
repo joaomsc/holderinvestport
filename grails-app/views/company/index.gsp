@@ -27,7 +27,12 @@
                 <tbody>
                 <g:each in="${companyList}" var="company">
                     <tr>
-                        <td><g:img class="list-img" dir="images" file="company-default.jpeg" width="30" height="30"/></td>
+                        <g:if test="${company.image}">
+                            <td><g:img class="side-img" dir="images" file="${company.image.split("/").last()}" width="30" height="30"/></td>
+                        </g:if>
+                        <g:else>
+                            <td><g:img class="list-img" dir="images" file="company-default.jpeg" width="30" height="30"/></td>
+                        </g:else>
                         <td class="col-sm-2"><a href="/company/${company.id}/show">${company.tradingName}</a></td>
                         <td class="col-sm-2">${company.name}</td>
                         <td class="col-sm-6">${company.description}</td>

@@ -10,6 +10,7 @@ class UrlMappings {
         }
 
         "/company/create"(controller: "company", action: "create")
+        "/company/save"(controller: "company", action: "save")
 
         "/portifolio/show"(controller: "portifolio", action: "show")
         "/portifolio/add/$companyId?"(controller: "portifolio", action: "addCompany")
