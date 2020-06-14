@@ -22,6 +22,7 @@ class Company {
     static mapping = {
         autoTimestamp true
         version false
+        description type: "text"
         portifolios joinTable: [name: 'portifolio_company', coloumn: 'portifolio_id']
     }
 

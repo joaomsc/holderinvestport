@@ -43,7 +43,7 @@ class CompanyController {
             companyService.save(company)
 
             def imageFile = params.imageFile
-            if(imageFile){
+            if(imageFile.filename != ""){
                 MultipartFile multipartFilefile = (MultipartFile) imageFile;
                 company.setImage(FileUtil.uploadCompanyImage(company.getId(), multipartFilefile))
             }
@@ -83,7 +83,7 @@ class CompanyController {
         try {
 
             def imageFile = params.imageFile
-            if(imageFile){
+            if(imageFile.filename != ""){
                 def oldImage = company.getImage()
                 MultipartFile multipartFilefile = (MultipartFile) imageFile;
                 company.setImage(FileUtil.uploadCompanyImage(company.getId(), multipartFilefile))
@@ -115,6 +115,15 @@ class CompanyController {
         }
         def company = companyService.get(id)
         FileUtil.deleteCompanyImage(company.getImage())
+
+        Company.withTransaction {sess ->
+            company.getPortifolios().each{
+                it -> it.removeFromCompanies(company)
+            }
+            company.save()
+            sess.flush()
+        }
+
         companyService.delete(id)
 
         request.withFormat {

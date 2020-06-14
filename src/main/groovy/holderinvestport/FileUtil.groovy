@@ -27,7 +27,7 @@ class FileUtil {
 //    request.getFile("productFile")
     static String uploadCompanyImage(Long companyId, MultipartFile multipartFile) {
         if (companyId && multipartFile) {
-            String companyImagePath = "${getRootPath()}images/"
+            String companyImagePath = "${getRootPath()}company-images/"
             makeDirectory(companyImagePath)
             def file = new File(companyImagePath, companyId + "-" + multipartFile.originalFilename)
             multipartFile.transferTo(file)
@@ -37,9 +37,11 @@ class FileUtil {
     }
 
     static void deleteCompanyImage(String companyImagePath) {
-        def file = new File(companyImagePath)
-        if (file.exists()) {
-            file.delete();
+        if(companyImagePath) {
+            def file = new File(companyImagePath)
+            if (file.exists()) {
+                file.delete();
+            }
         }
     }
 }

@@ -190,7 +190,7 @@ img {
 }
 
 .nav a.create {
-    background-image: url(../images/skin/database_add.png);
+    background-image: url(../images/skin/create.svg);
 }
 
 .nav li.dropdown.show ul.dropdown-menu {

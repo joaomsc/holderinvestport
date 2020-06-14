@@ -61,7 +61,7 @@
                 </sec:ifAllGranted>
                 <li><a class="list" href="${createLink(uri: '/company')}">Empresas</a></li>
                 <sec:ifAllGranted roles="ROLE_ADMIN">
-                    <li><a class="save" href="${createLink(uri: '/company/create')}">Criar Empresa</a></li>
+                    <li><a class="create" href="${createLink(uri: '/company/create')}">Criar Empresa</a></li>
                 </sec:ifAllGranted>
             </ul>
         </div>

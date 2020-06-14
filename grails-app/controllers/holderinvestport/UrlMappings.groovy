@@ -16,6 +16,7 @@ class UrlMappings {
         "/portifolio/add/$companyId?"(controller: "portifolio", action: "addCompany")
         "/portifolio/remove/$companyId?"(controller: "portifolio", action: "removeCompany")
 
+        "/register" (controller: 'register', action: "register", method: "POST")
         "/"(controller:'login', action:'auth')
         "500"(view:'/error')
         "404"(view:'/notFound')

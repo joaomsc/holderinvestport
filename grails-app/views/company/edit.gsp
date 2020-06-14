@@ -27,7 +27,7 @@
             <g:uploadForm resource="${this.company}" method="PUT">
                 <div class="form-group">
                     <g:if test="${company.image}">
-                        <td><g:img class="side-img" dir="images" file="${company.image.split("/").last()}" width="110" height="110"/></td></td>
+                        <td><g:img class="side-img" dir="company-images" file="${company.image.split("/").last()}" width="110" height="110"/></td></td>
                     </g:if>
                     <g:else>
                         <td><g:img class="side-img" dir="images" file="company-default.jpeg" width="110" height="110"/></td>
