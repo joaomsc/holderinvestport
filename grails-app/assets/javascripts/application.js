@@ -8,9 +8,8 @@
 //= require jquery-3.3.1.min
 //= require bootstrap
 //= require popper.min
-//= require jquery-3.3.1.min
-//= require dataTables.bootstrap4.min
-//= require jquery.dataTables.min
+//= require dataTables.bootstrap4
+//= require jquery.dataTables
 //= require_self
 
 $(document).ready(function () {
@@ -33,8 +32,7 @@ $(document).ready(function () {
     $('.portf-company-action').submit(function (event) {
         event.preventDefault();
 
-        var submitBtn = $("input[type=submit]",this);
-        console.log(submitBtn);
+        var submitBtn = $("input[type=submit]", this);
 
         $form = $(this);
 
@@ -47,8 +45,9 @@ $(document).ready(function () {
             type: $form.attr('method'),
             async: true,
             success: function (response) {
-                if(response.id) {
-                    if(isRemoveAction){
+                if (response.id) {
+                    if (isRemoveAction) {
+                        $form.closest(".company-card").remove()
                         submitBtn.val("Adicionar na carteira");
                         $(submitBtn).removeClass("btn-danger");
                         $(submitBtn).addClass("btn-success");

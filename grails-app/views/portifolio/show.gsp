@@ -14,7 +14,7 @@
     <div id="list-portifolio-company" class="card-body" role="main">
         <div id="list-portifolio-company-wrapper" class="card-columns">
             <g:each in="${this.portifolio.companies}" var="company">
-                    <div class="card" style="width: 18rem;">
+                    <div class="card company-card" style="width: 18rem;">
                         <g:if test="${company.image}">
                             <td><g:img alt="Card image cap" class="card-img-top" dir="company-images" file="${company.image.split("/").last()}"/></td>
                         </g:if>

@@ -6,11 +6,11 @@ buildscript {
         classpath "org.grails:grails-gradle-plugin:$grailsVersion"
         classpath "org.grails.plugins:hibernate5:7.0.0"
         classpath "gradle.plugin.com.github.erdi.webdriver-binaries:webdriver-binaries-gradle-plugin:2.0"
-        classpath "com.bertramlabs.plugins:asset-pipeline-gradle:3.0.10"
+        classpath "com.bertramlabs.plugins:asset-pipeline-gradle:2.15.0"
     }
 }
 
-version "0.1"
+version "1.0"
 group "holderinvestport"
 
 apply plugin:"eclipse"
@@ -63,7 +63,7 @@ dependencies {
     runtime "mysql:mysql-connector-java:5.1.29"
     runtime "org.apache.tomcat:tomcat-jdbc"
     runtime "javax.xml.bind:jaxb-api:2.3.0"
-    runtime "com.bertramlabs.plugins:asset-pipeline-grails:3.0.10"
+    runtime "com.bertramlabs.plugins:asset-pipeline-grails:2.15.0"
     testCompile "org.grails:grails-gorm-testing-support"
     testCompile "org.mockito:mockito-core"
     testCompile "org.grails:grails-web-testing-support"
